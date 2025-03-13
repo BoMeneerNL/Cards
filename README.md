@@ -1,10 +1,14 @@
 # Cards
 
 "Cards," also known as "Subset," is my first programming assignment for the course "Gestructureerd programmeren/Structured programming."
+## Using
 
+For this project i needed to use Processing.
+
+For running this project you need to have [Processing](https://processing.org/download) installed. All newer version should work, i used 4.3.3 for this project.
 ## The Assignment
 
-For this course, I need to create an application that displays sets of cards. The player must select a set of three cards where, for at least one of the three attributes (Amount, Symbols, and/or Color), the attributes are either all the same (e.g., red, red, and red) or all different (e.g., red, green, and blue). However, a combination like "blue, red, red" is not valid. All "must-haves" and "could-haves" are as follows:
+For this course, I need to create an application in Processing that displays sets of cards. The player must select a set of three cards where, for at least one of the three attributes (Amount, Symbols, and/or Color), the attributes are either all the same (e.g., red, red, and red) or all different (e.g., red, green, and blue). However, a combination like "blue, red, red" is not valid. All "must-haves" and "could-haves" are as follows:
 
 ## Must-Haves/Requirements
 
