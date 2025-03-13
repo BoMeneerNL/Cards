@@ -1,22 +1,26 @@
 import java.util.ArrayList;
-ArrayList<Card> generateDeck() {
-  ArrayList<Card> Cards = new ArrayList<Card>();
+import java.util.Collections;
+
+String[][] generateDeck() {
+  ArrayList<String[]> Cards = new ArrayList<>();
+
   for (int amount = 0; amount < AMOUNT.length; amount++) {
     for (int symbol = 0; symbol < SYMBOLS.length; symbol++) {
       for (int colour = 0; colour < COLOURS.length; colour++) {
-        Cards.add(new Card(AMOUNT[amount], SYMBOLS[symbol], COLOURS[colour]));
+        String[] Card = {
+          String.valueOf(AMOUNT[amount]),
+          SYMBOLS[symbol],
+          String.valueOf(COLOURS[colour])
+        };
+        Cards.add(Card);
       }
     }
   }
   return shuffleDeck(Cards);
 }
-ArrayList<Card> shuffleDeck(ArrayList<Card> Deck) {
-  ArrayList<Card> shuffledDeck= new ArrayList<Card>();
-  final int ORIGINAL_DECK_LENGTH = Deck.size();
-  while (shuffledDeck.size() != ORIGINAL_DECK_LENGTH) {
-    int random = (int)(Math.random() * Deck.size());
-    shuffledDeck.add(Deck.get(random));
-    Deck.remove(random);
-  }
-  return shuffledDeck;
+
+String[][] shuffleDeck(ArrayList<String[]> Deck) {
+  ArrayList<String[]> shuffledDeck = new ArrayList<>(Deck);
+  Collections.shuffle(shuffledDeck);
+  return shuffledDeck.toArray(new String[0][]);
 }

@@ -1,21 +1,5 @@
 import java.util.Arrays;
 
-class Card {
-  int Amount;
-  String Symbol;
-  int Colour;
-
-  Card(int Amount, String Symbol, int Colour) {
-    if (!checkCardInput(Amount, Symbol, Colour)) {
-      throw new IllegalArgumentException("Input check failed");
-    }
-    this.Amount = Amount;
-    this.Symbol = Symbol;
-    this.Colour = Colour;
-  }
-
-  
-}
 boolean checkCardInput(int Amount, String Symbol, int Colour) {
     boolean amountValid = false;
     boolean symbolValid = false;
