@@ -1,6 +1,5 @@
-import java.util.ArrayList;
-import java.util.Collections;
 
+String[][] CurrentDeck = generateDeck();
 String[][] generateDeck() {
   ArrayList<String[]> Cards = new ArrayList<>();
 

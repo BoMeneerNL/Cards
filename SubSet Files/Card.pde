@@ -1,30 +1,33 @@
-import java.util.Arrays;
+final int[] AMOUNT = {1, 2, 3};
+final String[] SYMBOLS = {"Triangle", "Rectangle", "Ellipse"};
+final int[] COLOURS = {RED, GREEN, BLUE};
 
-boolean checkCardInput(int Amount, String Symbol, int Colour) {
-    boolean amountValid = false;
-    boolean symbolValid = false;
-    boolean colourValid = false;
-
-    for (int num : AMOUNT) {
-      if (num == Amount) {
-        amountValid = true;
-        break;
-      }
-    }
-    
-    for (String sym : SYMBOLS) {
-      if (sym.equals(Symbol)) {
-        symbolValid = true;
-        break;
-      }
-    }
-    
-    for (int col : COLOURS) {
-      if (col == Colour) {
-        colourValid = true;
-        break;
-      }
-    }
-
-    return amountValid && symbolValid && colourValid;
+boolean isValidCard(String[] possibleCard) {
+  if (possibleCard.length != 3) {
+    return false;
   }
+  boolean AMOUNTCheck = false;
+  boolean SYMBOLSCheck = false;
+  boolean COLOURSCheck = false;
+
+  for (int i = 0; i < AMOUNT.length; i++) {
+    if (String.valueOf(AMOUNT[i]) == possibleCard[0]) {
+      AMOUNTCheck = true;
+      break;
+    }
+  }
+
+  for (int i = 0; i < SYMBOLS.length; i++) {
+    if (String.valueOf(SYMBOLS[i]) == possibleCard[1]) {
+      SYMBOLSCheck = true;
+      break;
+    }
+  }
+  for (int i = 0; i < COLOURS.length; i++) {
+    if (String.valueOf(SYMBOLS[i]) == possibleCard[1]) {
+      COLOURSCheck = true;
+      break;
+    }
+  }
+  return AMOUNTCheck && SYMBOLSCheck && COLOURSCheck;
+}
