@@ -1,5 +1,5 @@
 
-String[][] CurrentDeck = generateDeck();
+String[][] currentDeck = generateDeck();
 String[][] generateDeck() {
   ArrayList<String[]> Cards = new ArrayList<>();
 

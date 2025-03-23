@@ -6,28 +6,34 @@ boolean isValidCard(String[] possibleCard) {
   if (possibleCard.length != 3) {
     return false;
   }
-  boolean AMOUNTCheck = false;
-  boolean SYMBOLSCheck = false;
-  boolean COLOURSCheck = false;
+  boolean amountCheck = false;
+  boolean symbolsCheck = false;
+  boolean coloursCheck = false;
 
   for (int i = 0; i < AMOUNT.length; i++) {
     if (String.valueOf(AMOUNT[i]) == possibleCard[0]) {
-      AMOUNTCheck = true;
+      amountCheck = true;
       break;
     }
   }
 
   for (int i = 0; i < SYMBOLS.length; i++) {
     if (String.valueOf(SYMBOLS[i]) == possibleCard[1]) {
-      SYMBOLSCheck = true;
+      symbolsCheck = true;
       break;
     }
   }
   for (int i = 0; i < COLOURS.length; i++) {
-    if (String.valueOf(SYMBOLS[i]) == possibleCard[1]) {
-      COLOURSCheck = true;
+    if (String.valueOf(COLOURS[i]) == possibleCard[1]) {
+      coloursCheck = true;
       break;
     }
   }
-  return AMOUNTCheck && SYMBOLSCheck && COLOURSCheck;
+  return amountCheck && symbolsCheck && coloursCheck;
+}
+
+void mouseReleased() {
+  if (mouseY >= height - 150) {
+    handleNewClickedSelectHandItem(getClickedHandCard());
+  }
 }

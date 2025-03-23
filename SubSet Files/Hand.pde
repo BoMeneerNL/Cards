@@ -3,6 +3,11 @@ int[] selectedInHand = {0, 0, 0};
 
 void drawHand() {
   pullDeckToHand();
+  if (countValidSets() < 1) {
+    hand.clear();
+    currentScreenState = ScreenState.Finish;
+    return;
+  }
   for (int i = 0; i < hand.size(); i++) {
     fill(WHITE);
     rect(width * i / hand.size(), height - (cardInSelectedHand(i + 1) ? 150 : 100), 100, 150, 14);
@@ -16,7 +21,7 @@ void drawHand() {
       triangle(x, y, x - 5, y + 10, x + 5, y + 10);
       break;
     case "Rectangle":
-      rect(x - 5, y, 10, 10); // A 10x10 rectangle
+      rect(x - 5, y, 10, 10);
       break;
     case "Ellipse":
       ellipse(x, y + 5, 10, 10);
@@ -26,19 +31,15 @@ void drawHand() {
 }
 
 void pullDeckToHand() {
-  ArrayList<String[]> currentPlayDeck = new ArrayList<String[]>(Arrays.asList(CurrentDeck));
+  ArrayList<String[]> currentPlayDeck = new ArrayList<String[]>(Arrays.asList(currentDeck));
 
   while (hand.size() < 9 && !currentPlayDeck.isEmpty()) {
-    String[] card = currentPlayDeck.remove(0); // Take the first card from CurrentDeck
+    String[] card = currentPlayDeck.remove(0);
     hand.add(card); // Add to hand
   }
-  CurrentDeck = currentPlayDeck.toArray(new String[0][]);
+  currentDeck = currentPlayDeck.toArray(new String[0][]);
 }
-void mouseReleased() {
-  if (mouseY >= height - 150) {
-    handleNewClickedSelectHandItem(getClickedHandCard());
-  }
-}
+
 //Returns hand clicked index for card
 int getClickedHandCard() {
   return round((mouseX / (width / 9)));
@@ -56,7 +57,7 @@ void handleNewClickedSelectHandItem(int index) {
       return;
     }
   }
-  
+
   for (int i = 0; i < selectedInHand.length; i++) {
     if (selectedInHand[i] == 0) {
       selectedInHand[i] = cardNumber;

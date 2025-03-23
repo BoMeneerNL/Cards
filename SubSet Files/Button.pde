@@ -1,8 +1,8 @@
-void DrawButton(int x, int y, int width, int height, String text) {
-  DrawButton(x, y, width, height, text, false, false);
+void drawButton(int x, int y, int width, int height, String text) {
+  drawButton(x, y, width, height, text, false, false);
 }
 
-void DrawButton(int x, int y, int width, int height, String text, boolean XCenter, boolean YCenter) {
+void drawButton(int x, int y, int width, int height, String text, boolean XCenter, boolean YCenter) {
   stroke(0);
   rect(x, y, width, height, 10); // Rounded corners
   textAlign((XCenter ?CENTER:LEFT), (YCenter?CENTER:TOP));
@@ -13,5 +13,9 @@ void DrawButton(int x, int y, int width, int height, String text, boolean XCente
   textAlign(LEFT, TOP);
   fill(color(POKERGREEN));
 }
-void on() {
+
+void mouseClicked() {
+  if (mouseX >= 10&& mouseX <= (10+200) &&mouseY >= 10 && mouseY <= (10+60)) {
+    addSet();
+  }
 }

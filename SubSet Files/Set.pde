@@ -4,27 +4,41 @@ Set<String[][]> currentSets = new HashSet<>();
 
 
 boolean isSet(String[][] set) {
-
   if (set.length != 3) {
-    println("Not a valid set. The set does not have 3 rows.");
     return false;
   }
+  // Check if amounts are all the same, or all diffrent
+  boolean validAmounts = (set[0][0].equals(set[1][0]) && set[0][0].equals(set[2][0])) ||
+    (!set[0][0].equals(set[1][0]) && !set[0][0].equals(set[2][0]) && !set[1][0].equals(set[2][0]));
 
-  if ((set[0][0].equals(set[1][0]) && set[0][0].equals(set[2][0])) ||
-    (set[0][1].equals(set[1][1]) && set[0][1].equals(set[2][1])) ||
-    (set[0][2].equals(set[1][2]) && set[0][2].equals(set[2][2]))) {
-    println("Valid set - elements in at least one column are all the same.");
-    return true;
-  }
-  if ((!set[0][0].equals(set[1][0]) && !set[0][0].equals(set[2][0]) && !set[1][0].equals(set[2][0])) ||
-    (!set[0][1].equals(set[1][1]) && !set[0][1].equals(set[2][1]) && !set[1][1].equals(set[2][1])) ||
-    (!set[0][2].equals(set[1][2]) && !set[0][2].equals(set[2][2]) && !set[1][2].equals(set[2][2]))) {
-    println("Valid set - elements in at least one column are all distinct.");
-    return true;
-  }
-  println("Not a valid set.");
-  return false;
+  // Check if symbols are all the same, or all diffrent
+  boolean validSymbols = (set[0][1].equals(set[1][1]) && set[0][1].equals(set[2][1])) ||
+    (!set[0][1].equals(set[1][1]) && !set[0][1].equals(set[2][1]) && !set[1][1].equals(set[2][1]));
+
+  // Check if colours are all the same, or all diffrent
+  boolean validColours = (set[0][2].equals(set[1][2]) && set[0][2].equals(set[2][2])) ||
+    (!set[0][2].equals(set[1][2]) && !set[0][2].equals(set[2][2]) && !set[1][2].equals(set[2][2]));
+
+  return validAmounts || validSymbols || validColours;
 }
+
+int countValidSets() {
+  int count = 0;
+
+  // Loop through all combinations of 3 cards in the hand
+  for (int i = 0; i < hand.size() - 2; i++) {
+    for (int j = i + 1; j < hand.size() - 1; j++) {
+      for (int k = j + 1; k < hand.size(); k++) {
+        String[][] possibleSet = {hand.get(i), hand.get(j), hand.get(k)};
+        if (isSet(possibleSet)) {
+          count++;
+        }
+      }
+    }
+  }
+  return count;
+}
+
 
 
 
@@ -36,7 +50,7 @@ void addSet() {
     }
   }
 
-  String[][] set = {hand.get(selectedInHand[0]), hand.get(selectedInHand[1]), hand.get(selectedInHand[1])};
+  String[][] set = {hand.get(selectedInHand[0]), hand.get(selectedInHand[1]), hand.get(selectedInHand[2])};
   if (!isSet(set)) {
     println("set no set");
     return;
