@@ -15,7 +15,19 @@ void drawButton(int x, int y, int width, int height, String text, boolean XCente
 }
 
 void mouseClicked() {
-  if (mouseX >= 10&& mouseX <= (10+200) &&mouseY >= 10 && mouseY <= (10+60)) {
+  if (mouseX >= 10&& mouseX <= (10+200) &&mouseY >= 10 && mouseY <= (10+60) && currentScreenState == ScreenState.Playing) {
     addSet();
+  }
+  if (currentScreenState == ScreenState.StartGame) {
+    int buttonWidth = 200;
+    int buttonHeight = 50;
+    int buttonX = width / 2 - buttonWidth / 2;
+    int buttonY = height / 3 + 60;
+
+    // Check if the mouse is inside the "Start Game" button area
+    if (mouseX >= buttonX && mouseX <= buttonX + buttonWidth && mouseY >= buttonY && mouseY <= buttonY + buttonHeight) {
+      currentDeck = generateDeck();
+      currentScreenState = ScreenState.Playing;
+    }
   }
 }

@@ -4,7 +4,7 @@ enum ScreenState {
     Finish
 };
 
-ScreenState currentScreenState = ScreenState.Playing;
+ScreenState currentScreenState = ScreenState.StartGame;
 
 void DrawScreenState() {
   switch(currentScreenState) {
@@ -15,10 +15,11 @@ void DrawScreenState() {
     text("Welcome to SubSet", width / 2, height / 3);
     textSize(12);
     textAlign(LEFT, TOP);
+
     int buttonWidth = 200;
     int buttonHeight = 50;
-    int buttonX = width / 2 - buttonWidth / 2; // Centered horizontally
-    int buttonY = height / 3 + 60; // Some spacing below the text
+    int buttonX = width / 2 - buttonWidth / 2;
+    int buttonY = height / 3 + 60;
 
     drawButton(buttonX, buttonY, buttonWidth, buttonHeight, "Start Game", true, true);
     break;
