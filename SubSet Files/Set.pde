@@ -1,8 +1,8 @@
 
-
+//All current sets
 Set<String[][]> currentSets = new HashSet<>();
 
-
+//Check if a set is an actual set
 boolean isSet(String[][] set) {
   if (set.length != 3) {
     return false;
@@ -41,7 +41,7 @@ int countValidSets() {
 
 
 
-
+//add a new set with the 3 selected cards
 void addSet() {
   for (int i = 0; i < selectedInHand.length; i++) {
     if (selectedInHand[i] == 0 || hand.size() < selectedInHand[i]) {

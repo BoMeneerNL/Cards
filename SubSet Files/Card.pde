@@ -1,7 +1,9 @@
+//Card items
 final int[] AMOUNT = {1, 2, 3};
 final String[] SYMBOLS = {"Triangle", "Rectangle", "Ellipse"};
 final int[] COLOURS = {RED, GREEN, BLUE};
 
+//Check if card is valid
 boolean isValidCard(String[] possibleCard) {
   if (possibleCard.length != 3) {
     return false;
@@ -31,7 +33,7 @@ boolean isValidCard(String[] possibleCard) {
   }
   return amountCheck && symbolsCheck && coloursCheck;
 }
-
+//Handle selected card from hand
 void mouseReleased() {
   if (mouseY >= height - 150) {
     handleNewClickedSelectHandItem(getClickedHandCard());

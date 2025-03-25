@@ -1,11 +1,13 @@
+//draw centerless button
 void drawButton(int x, int y, int width, int height, String text) {
   drawButton(x, y, width, height, text, false, false);
 }
 
-void drawButton(int x, int y, int width, int height, String text, boolean XCenter, boolean YCenter) {
+//add parameters from other drawbutton to be able to choose if you want to center text
+void drawButton(int x, int y, int width, int height, String text, boolean xCenter, boolean yCenter) {
   stroke(0);
-  rect(x, y, width, height, 10); // Rounded corners
-  textAlign((XCenter ?CENTER:LEFT), (YCenter?CENTER:TOP));
+  rect(x, y, width, height, 10);
+  textAlign((xCenter ? CENTER:LEFT), (yCenter ? CENTER:TOP));
 
   fill(0);
   textSize(16);
@@ -15,9 +17,11 @@ void drawButton(int x, int y, int width, int height, String text, boolean XCente
 }
 
 void mouseClicked() {
+  //handle play set button
   if (mouseX >= 10&& mouseX <= (10+200) &&mouseY >= 10 && mouseY <= (10+60) && currentScreenState == ScreenState.Playing) {
     addSet();
   }
+  //handle start game button
   if (currentScreenState == ScreenState.StartGame) {
     int buttonWidth = 200;
     int buttonHeight = 50;

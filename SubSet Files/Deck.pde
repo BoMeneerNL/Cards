@@ -1,5 +1,7 @@
-
+//Array containing the deck (excluding the hand)
 String[][] currentDeck = generateDeck();
+
+//Generate the deck on start
 String[][] generateDeck() {
   ArrayList<String[]> Cards = new ArrayList<>();
 
@@ -17,7 +19,7 @@ String[][] generateDeck() {
   }
   return shuffleDeck(Cards);
 }
-
+//return the shuffled version of the deck
 String[][] shuffleDeck(ArrayList<String[]> Deck) {
   ArrayList<String[]> shuffledDeck = new ArrayList<>(Deck);
   Collections.shuffle(shuffledDeck);

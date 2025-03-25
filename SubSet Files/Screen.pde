@@ -1,3 +1,4 @@
+//enum to store Screen State
 enum ScreenState {
   StartGame,
     Playing,
@@ -6,6 +7,7 @@ enum ScreenState {
 
 ScreenState currentScreenState = ScreenState.StartGame;
 
+//Draw items based on the current screen state
 void DrawScreenState() {
   switch(currentScreenState) {
   case StartGame:
